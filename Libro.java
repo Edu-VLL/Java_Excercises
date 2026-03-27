@@ -23,4 +23,16 @@ public class Libro {
         System.out.println("Año: " + anio);
         System.out.println("Disponible: " + disponible);
     }
+    public String getTitulo()
+    {
+        return titulo;
+    }
+    public void setDisponible(boolean disponible)
+    {
+        this.disponible = disponible;
+    }
+    public int getAnio()
+    {
+        return anio;
+    }
 }
