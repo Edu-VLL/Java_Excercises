@@ -1,4 +1,4 @@
-package Java.ejercicios.Ejercicio3;
+package Java.ejercicios.Ejercicio3.Sistema_Biblioteca;
 
 public class Libro {
 
@@ -30,6 +30,10 @@ public class Libro {
     public void setDisponible(boolean disponible)
     {
         this.disponible = disponible;
+    }
+    public boolean getDisponible()
+    {
+        return disponible;
     }
     public int getAnio()
     {

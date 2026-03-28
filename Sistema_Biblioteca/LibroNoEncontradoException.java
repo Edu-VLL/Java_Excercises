@@ -1,4 +1,4 @@
-package Java.ejercicios.Ejercicio3;
+package Java.ejercicios.Ejercicio3.Sistema_Biblioteca;
 
 public class LibroNoEncontradoException extends Exception
 {

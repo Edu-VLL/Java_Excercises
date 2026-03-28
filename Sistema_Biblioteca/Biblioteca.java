@@ -1,11 +1,11 @@
-package Java.ejercicios.Ejercicio3;
+package Java.ejercicios.Ejercicio3.Sistema_Biblioteca;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Biblioteca {
 
-    ArrayList<Libro> listaLibros;
+    private ArrayList<Libro> listaLibros;
 
     public Biblioteca()
     {
@@ -19,11 +19,12 @@ public class Biblioteca {
     }
     public void listarLibros()
     {
-        int i = 0;
+        int i = 1;
          for (Libro l : listaLibros)
          {
-             System.out.println("\nLibro " + i + 1 + ": \n");
+             System.out.println("\nLibro " + i + ": \n");
              l.mostrarInfo();
+             i++;
          }
     }
     public void prestarLibro(String titulo) throws LibroNoDisponibleException
@@ -31,7 +32,7 @@ public class Biblioteca {
         boolean validador = false;
         for (Libro l : listaLibros)
         {
-            if (l.getTitulo().equals(titulo))
+            if (l.getTitulo().equals(titulo) && l.getDisponible())
             {
                 l.setDisponible(false);
                 System.out.println("Libro prestado.\n");
@@ -50,30 +51,36 @@ public class Biblioteca {
 
         for (Libro l : listaLibros)
         {
-            if (l.getTitulo().equals(titulo))
+            if (l.getTitulo().equals(titulo) && !l.getDisponible())
             {
                 l.setDisponible(true);
                 System.out.println("Libro devuelto.");
                 validador = true;
             }
         }
-
         if (!validador)
         {
-            throw new LibroNoEncontradoException("El libro no existe.");
+            throw new LibroNoEncontradoException("El libro no existe ó está disponible.");
         }
     }
-
     public void LibroMasAntiguo()
     {
         int auxAnio = Integer.MAX_VALUE;
+        Libro libroMenor = null;
+
         for (Libro l : listaLibros)
         {
             if (l.getAnio() < auxAnio)
             {
                 auxAnio = l.getAnio();
+                libroMenor = l;
             }
+
         }
-        System.out.println("El libro más antiguo es: " + auxAnio);
+        if(libroMenor != null)
+        {
+            libroMenor.mostrarInfo();
+        }
+
     }
 }
